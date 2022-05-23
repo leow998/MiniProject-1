@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Cocktailpedia</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+
+        .form {
+            position: relative;
+            border-radius: 10px;
+            max-width: 560px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .form input {
+            outline: 0;
+            background: #f2f2f2;
+            width: 100%;
+            border: 0;
+            border-radius: 5px;
+            margin: 0 0 15px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .form button {
+            text-transform: uppercase;
+            outline: 0;
+            background: greenyellow;
+            width: 100%;
+            border: 0;
+            border-radius: 5px;
+            padding: 15px;
+            color: black;
+            font-size: 14px;
+            -webkit-transition: all 0.3 ease;
+            transition: all 0.3 ease;
+            cursor: pointer;
+        }
+
+        .form span {
+            font-size: 25px;
+            font-weight: bold;
+            color: yellowgreen;
+        }
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Cocktail</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a th:href="@{/}">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="search">
+        <div class="form">
+            <form action="#" method="POST" th:action="@{/search}"
+                  th:object="${search}">
+                <span class="material-icons">Enter Cocktail name</span>
+                <input class="form-control" placeholder="Cocktail Name" th:field="*{drink}"
+                       type="text">
+                <button type="submit">Search</button>
+                <br>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div th:if="${show == false}">
+        <div class="alert alert-danger" role="alert">
+            <p th:text="${message}"></p>
+        </div>
+    </div>
+    <br>
+    <div th:if="${show}">
+        <h4>Cocktails: </h4>
+        <table border="1"
+               class="table table-responsive-md">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Image</th>
+                
+                <th>Category</th>
+                <th>Instructions</th>
+            
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cocktail:${cocktails}">
+                <td th:text="${cocktail.strDrink}"></td>
+                <td > <img th:src="${cocktail.strDrinkThumb}" width="200" height="200"></td>
+                <td th:text="${cocktail.strCategory}"></td>
+                <td th:text="${cocktail.strInstructions}"></td>
+             
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

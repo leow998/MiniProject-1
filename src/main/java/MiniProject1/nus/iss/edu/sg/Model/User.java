@@ -1,17 +1,19 @@
 package MiniProject1.nus.iss.edu.sg.Model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 @Entity
+@Table(name = "user", schema = "cocktaildb")
+
+
 public class User {
+
+    @Id
     private String username;
     private String password;
     private String firstName;
     private String lastName;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id; 
     public String getUsername() {
         return username;

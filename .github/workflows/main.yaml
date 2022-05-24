@@ -1,11 +1,11 @@
 name: Compile, test, deploy 
 on: [ "push" ]
 env: 
-  SPRING_DATASOURCE_URL: ${{ secrets.spring_datasource_url ))
-  SPRING_DATASOURCE_USERNAME: ${{ secrets.spring_datasource_username ))
-  SPRING_DATASOURCE_PASSWORD: ${{ secrets.spring_datasource_password ))
-  SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: ${{ secrets.spring_jpa_properties_hibernate_dialect ))
-  SPRING_JPA_HIBERNATE_DDL-AUTO: ${{ secrets.spring_jpa_hibernate_ddl-auto ))
+  SPRING_DATASOURCE_URL: ${{ secrets.spring_datasource_url }}
+  SPRING_DATASOURCE_USERNAME: ${{ secrets.spring_datasource_username }}
+  SPRING_DATASOURCE_PASSWORD: ${{ secrets.spring_datasource_password }}
+  SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: ${{ secrets.spring_jpa_properties_hibernate_dialect }}
+  SPRING_JPA_HIBERNATE_DDL-AUTO: ${{ secrets.spring_jpa_hibernate_ddl-auto }}
 jobs:
   step1:
     runs-on: ubuntu-latest
